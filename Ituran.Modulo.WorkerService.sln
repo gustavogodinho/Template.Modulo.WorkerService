@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ituran.Modulo.WorkerService", "src\Ituran.Modulo.WorkerService\Ituran.Modulo.WorkerService.csproj", "{658C0F8B-4D4C-45CC-8D33-34973C5A6F0A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ituran.Modulo.WorkerService", "Ituran.Modulo.WorkerService", "{03410A76-7253-431E-8E74-66FE975F4F92}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ituran.Modulo.WorkerService.Data", "Ituran.Modulo.WorkerService.Data", "{EAD6F432-6E65-4269-9F41-08BC95914DAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ituran.Modulo.WorkerService.Dominio", "Ituran.Modulo.WorkerService.Dominio", "{6F53DF27-24EB-4492-9079-89E12746A18D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ituran.Modulo.WorkerService.Data", "src\Ituran.Modulo.WorkerService.Data\Ituran.Modulo.WorkerService.Data.csproj", "{548E063D-53BC-44EE-A1A8-672B38994BC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ituran.Modulo.WorkerService.Dominio", "src\Ituran.Modulo.WorkerService.Dominio\Ituran.Modulo.WorkerService.Dominio.csproj", "{6CF860D5-9131-4C16-B9E5-0EF765487080}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{658C0F8B-4D4C-45CC-8D33-34973C5A6F0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{658C0F8B-4D4C-45CC-8D33-34973C5A6F0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{658C0F8B-4D4C-45CC-8D33-34973C5A6F0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{658C0F8B-4D4C-45CC-8D33-34973C5A6F0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{548E063D-53BC-44EE-A1A8-672B38994BC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{548E063D-53BC-44EE-A1A8-672B38994BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{548E063D-53BC-44EE-A1A8-672B38994BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{548E063D-53BC-44EE-A1A8-672B38994BC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CF860D5-9131-4C16-B9E5-0EF765487080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CF860D5-9131-4C16-B9E5-0EF765487080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CF860D5-9131-4C16-B9E5-0EF765487080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CF860D5-9131-4C16-B9E5-0EF765487080}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{658C0F8B-4D4C-45CC-8D33-34973C5A6F0A} = {03410A76-7253-431E-8E74-66FE975F4F92}
+		{548E063D-53BC-44EE-A1A8-672B38994BC2} = {EAD6F432-6E65-4269-9F41-08BC95914DAE}
+		{6CF860D5-9131-4C16-B9E5-0EF765487080} = {6F53DF27-24EB-4492-9079-89E12746A18D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A810C021-EF74-47F8-A73D-66BF070CF25D}
+	EndGlobalSection
+EndGlobal
