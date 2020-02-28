@@ -8,4 +8,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ituran.Modulo.WorkerService.Data\Ituran.Modulo.WorkerService.Data.csproj" />
+    <ProjectReference Include="..\Ituran.Modulo.WorkerService.Dominio\Ituran.Modulo.WorkerService.Dominio.csproj" />
+  </ItemGroup>
 </Project>

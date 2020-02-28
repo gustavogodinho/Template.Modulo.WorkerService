@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Ituran.Framework" Version="3.0.99" />
+  </ItemGroup>
+
 </Project>

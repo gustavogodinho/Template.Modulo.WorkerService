@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Ituran.Modulo.WorkerService.Data;
 
 namespace Ituran.Modulo.WorkerService
 {
@@ -19,6 +20,8 @@ namespace Ituran.Modulo.WorkerService
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>();
+                    services.AddDbContext(hostContext.Configuration);
+
                 });
     }
 }
