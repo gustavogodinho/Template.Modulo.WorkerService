@@ -12,7 +12,7 @@ namespace Ituran.Modulo.WorkerService.Dominio.Models
             int cdPessoa = 0;
             string mensagem = "Ituran:  voy a realizar pruebas | 1 minuto: " + DateTime.Now;
             string tracking = "";
-            string numero = "11960680891";
+            string numero = "11991164957";
             int cdComunicacao = 40;
 
 
