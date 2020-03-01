@@ -9,15 +9,16 @@ namespace Ituran.Modulo.WorkerService.Data.Models
     {
         public string VerificaAlerta()
         {
-            // 1 Consultar tabela
+            DateTime DT_ALERTA_INICIO = DateTime.Now;
+            double tempoAlerta = 60000;
+
+            // 1 Consultar tabela (retorno Lista)
             var listaDeAlertas = ConsultarAlerta();
 
             // 2 Verifica se retornou alguma linha
             if (listaDeAlertas.Length > 0)
             {
-                DateTime DT_ALERTA_INICIO = DateTime.Now;
-                double tempoAlerta = 60000;
-
+                //Loop da lista 
                 // 3   Verifica se a data inicio esta expirada
                 bool t = DT_ALERTA_INICIO.AddMilliseconds(tempoAlerta) >= DateTime.Now;
 
