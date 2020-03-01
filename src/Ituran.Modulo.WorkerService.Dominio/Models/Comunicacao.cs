@@ -5,7 +5,7 @@ using System;
 
 namespace Ituran.Modulo.WorkerService.Dominio.Models
 {
-    public class PessoaComunicacao
+    public class Comunicacao
     {
         public NotificacaoRetorno CriarSMS()
         {
