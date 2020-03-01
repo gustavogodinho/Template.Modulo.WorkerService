@@ -27,11 +27,11 @@ namespace Ituran.Modulo.WorkerService.Data.Models
                 {
                     // ALERTA_ATIVO = 0
                     // DT_ALERTA_FIM = DateTime
-                    // DESATIVACAO_MANUAL = Automatico 
+                    // DESATIVACAO_MANUAL = Automatico
+                    // Pega a ultima localização e atualiza (LATITUDE_FIM, LONGITUDE_FIM)
                     // Envia Alerta para Lista de contatos (DS_CONTATOS)
                     EnviarAlerta("lista de telefones");
                 }
-
             }
             
             return "";
@@ -48,7 +48,7 @@ namespace Ituran.Modulo.WorkerService.Data.Models
         private void EnviarAlerta(string dscontatos)
         {
             //DS_CONTATOS lista
-
+            //Link da ultima localização (LastLocation)
 
             try
             {
@@ -62,9 +62,5 @@ namespace Ituran.Modulo.WorkerService.Data.Models
 
             }
         }
-
-
-
-
     }
 }

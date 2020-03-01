@@ -13,10 +13,8 @@ namespace Ituran.Modulo.WorkerService.Dominio.Models
         public DateTime DT_ALERTA_FIM { get; set; }
         public string LATITUDE_INICIO { get; set; }
         public string LONGITUDE_INICIO { get; set; }
-        
-        //public string LATITUDE_FIM { get; set; }
-        //public string LONGITUDE_FIM { get; set; }  --  Perguntar se o Front pode enviar esse dado
-
+        public string LATITUDE_FIM { get; set; }
+        public string LONGITUDE_FIM { get; set; }  
         public DesativacaoEnum DESATIVACAO_MANUAL { get; set; }
     }
 }
