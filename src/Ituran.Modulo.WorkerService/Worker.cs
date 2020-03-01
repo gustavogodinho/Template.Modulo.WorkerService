@@ -2,6 +2,7 @@ using System;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Ituran.Modulo.WorkerService.Data.Models;
 using Ituran.Modulo.WorkerService.Dominio.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -30,30 +31,43 @@ namespace Ituran.Modulo.WorkerService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            while (!stoppingToken.IsCancellationRequested)
+
+            //Testar erros 
+            try
             {
-
-                _logger.LogInformation("Verificando eventos: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-
-                PessoaComunicacao _pessoaComunicacao = new PessoaComunicacao();
-
-                NotificacaoRetorno notificacao = _pessoaComunicacao.CriarSMS();
-
-                string jsonResultado = JsonSerializer.Serialize(notificacao, _jsonOptions);
-
-                if (notificacao.DsErroRetornado != null)
+                while (!stoppingToken.IsCancellationRequested)
                 {
-                    _logger.LogInformation(jsonResultado);
-                }
-                else
-                {
-                    _logger.LogInformation(jsonResultado);
-                }
+                    _logger.LogInformation("Verificando eventos: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
-                await Task.Delay(_settings.DelayMilliseconds, stoppingToken);
+                    AlertaSeguranca _alertaSeguranca = new AlertaSeguranca();
+
+                    //Aqui consultar tabela de Alerta 
+                    var alerta = _alertaSeguranca.VerificaAlerta();
+
+
+                    Comunicacao _pessoaComunicacao = new Comunicacao();
+
+                    NotificacaoRetorno notificacao = _pessoaComunicacao.CriarSMS();
+
+                    string jsonResultado = JsonSerializer.Serialize(notificacao, _jsonOptions);
+
+                    if (notificacao.DsErroRetornado != null)
+                    {
+                        _logger.LogInformation(jsonResultado);
+                    }
+                    else
+                    {
+                        _logger.LogInformation(jsonResultado);
+                    }
+
+                    await Task.Delay(_settings.DelayMilliseconds, stoppingToken);
+                }
             }
-
-          
+            catch (Exception)
+            {
+                           
+            }
+            
         }
     }
 }

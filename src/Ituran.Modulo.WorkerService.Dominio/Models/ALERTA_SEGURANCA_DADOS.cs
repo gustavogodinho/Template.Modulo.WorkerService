@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ituran.Modulo.WorkerService.Dominio.Enum;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,8 +13,10 @@ namespace Ituran.Modulo.WorkerService.Dominio.Models
         public DateTime DT_ALERTA_FIM { get; set; }
         public string LATITUDE_INICIO { get; set; }
         public string LONGITUDE_INICIO { get; set; }
-        public string LATITUDE_FIM { get; set; }
-        public string LONGITUDE_FIM { get; set; }
-        public int DESATIVACAO_MANUAL { get; set; }
+        
+        //public string LATITUDE_FIM { get; set; }
+        //public string LONGITUDE_FIM { get; set; }  --  Perguntar se o Front pode enviar esse dado
+
+        public DesativacaoEnum DESATIVACAO_MANUAL { get; set; }
     }
 }
