@@ -16,9 +16,11 @@ namespace Ituran.Modulo.WorkerService
         private readonly ILogger<Worker> _logger;
         private readonly WorkerSettings _settings;
         private readonly JsonSerializerOptions _jsonOptions;
+        private readonly IAlertaSeguranca _alertaSeguranca; 
 
-        public Worker(ILogger<Worker> logger, IConfiguration configuration)
+        public Worker(ILogger<Worker> logger, IConfiguration configuration, IAlertaSeguranca alertaSeguranca)
         {
+            _alertaSeguranca = alertaSeguranca;
             _logger = logger;
             _settings = new WorkerSettings();
             new ConfigureFromConfigurationOptions<WorkerSettings>(configuration.GetSection("WorkerSettings")).Configure(_settings);
@@ -27,6 +29,8 @@ namespace Ituran.Modulo.WorkerService
             {
                 IgnoreNullValues = true
             };
+
+           
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -39,9 +43,9 @@ namespace Ituran.Modulo.WorkerService
                 {
                     _logger.LogInformation("Verificando eventos: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
-                    AlertaSeguranca _alertaSeguranca = new AlertaSeguranca();
 
                     //Aqui consultar tabela de Alerta 
+                   // var _alertaSeguranca = new AlertaSeguranca();
                     var alerta = _alertaSeguranca.VerificaAlerta();
 
 

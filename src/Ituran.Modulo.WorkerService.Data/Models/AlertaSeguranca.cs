@@ -8,10 +8,10 @@ using System.Linq;
 
 namespace Ituran.Modulo.WorkerService.Data.Models
 {
-    public class AlertaSeguranca
+    public class AlertaSeguranca : IAlertaSeguranca
     {
         private readonly WorkerContext _workerContext;
-        
+
         public AlertaSeguranca(WorkerContext workerContext)
         {
             _workerContext = workerContext;
@@ -19,14 +19,18 @@ namespace Ituran.Modulo.WorkerService.Data.Models
 
         public string VerificaAlerta()
         {
+
+            var listaDeAlertas = ConsultarAlerta();
+
+
             DateTime DT_ALERTA_INICIO = DateTime.Now;
             double tempoAlerta = 60000;
 
             // 1 Consultar tabela (retorno Lista)
-            var listaDeAlertas = ConsultarAlerta();
+
 
             // 2 Verifica se retornou alguma linha
-            if (listaDeAlertas.Length > 0)
+            if (listaDeAlertas.Any())
             {
                 //Loop da lista 
                 // 3   Verifica se a data inicio esta expirada
@@ -36,9 +40,6 @@ namespace Ituran.Modulo.WorkerService.Data.Models
                 if (t)
                 {
 
-                    var alerta = _workerContext.ALERTA_SEGURANCA_DADOS.Add();
-                    
-                       
                     // ALERTA_ATIVO = 0
                     // DT_ALERTA_FIM = DateTime
                     // DESATIVACAO_MANUAL = Automatico
@@ -47,29 +48,49 @@ namespace Ituran.Modulo.WorkerService.Data.Models
                     EnviarAlerta("lista de telefones");
                 }
             }
-            
+
 
             return "";
         }
-        public async Task<List<ALERTA_SEGURANCA>> FindAllAsync()
+        //public async Task<List<ALERTA_SEGURANCA>> FindAllAsync()
+        //{
+        //    return await _workerContext.ALERTA_SEGURANCA.OrderBy(x => x.Name).ToListAsync();
+        //}
+
+        //public async Task<List<ALERTA_SEGURANCA>> FindAllAsync()
+        //{
+        //    return await _workerContext.ALERTA_SEGURANCA.ToListAsync();
+        //}
+
+        private List<dynamic> ConsultarAlerta()
         {
-            return await _workerContext.ALERTA_SEGURANCA.OrderBy(x => x.Name).ToListAsync();
-        }
+            try
+            {
+                var query = (from a in _workerContext.ALERTA_SEGURANCA
+                             join b in _workerContext.ALERTA_SEGURANCA_DADOS on a equals b.CD_ALERTA_SEGURANCA
+                             select new
+                             {
+                                 a.ALERTA_ATIVO,
+                                 a.ALERTA_TEMPO,
+                                 a.DS_CONTATOS,
+                                 a.DS_MENSAGEM,
+                                 b.DT_ALERTA_INICIO,
+                                 b.DT_ALERTA_FIM,
+                                 b.DESATIVACAO_MANUAL
+                             }).ToList();
 
-        public async Task<List<ALERTA_SEGURANCA>> FindAllAsync()
-        {
-            return await _workerContext.ALERTA_SEGURANCA.ToListAsync();
-        }
+                var DyObjectsList = new List<dynamic>();
 
-        private List<ALERTA_SEGURANCA> ConsultarAlerta()
-        {
-            var r = _workerContext.ALERTA_SEGURANCA.Where(x => x.ALERTA_ATIVO == 1).ToList();
+                DyObjectsList.Add(query);
 
-            var q = from a in _workerContext.ALERTA_SEGURANCA
-                    join b in _workerContext.ALERTA_SEGURANCA_DADOS on a equals b.CD_ALERTA_SEGURANCA
-                    select new { a.ALERTA_TEMPO, b.DT_ALERTA_INICIO };
+                return DyObjectsList;
+            }
+            catch (Exception e)
+            {
 
-            return r;
+                throw;
+            }
+
         }
 
         private void EnviarAlerta(string dscontatos)
